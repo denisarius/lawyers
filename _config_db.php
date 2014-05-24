@@ -2,7 +2,7 @@
 $db_host = 'localhost';
 $db_name = 'ptzweb_lawyers';
 $db_login = 'ptzweb_db';
-$db_pass = 'devpass';
+$db_pass = '34VJyKZM1H65R';
 
 $db_debug = true;
 $db_full_debug = false;

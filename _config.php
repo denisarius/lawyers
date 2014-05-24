@@ -7,7 +7,7 @@ if (($p = mb_strrpos(__FILE__, '/')) === false) $p = mb_strrpos(__FILE__, '\\');
 $pmPath = mb_substr(__FILE__, 0, $p).$ph;
 $pmRootPath = mb_substr(__FILE__, 0, $p).'/';
 // -----------------------------------------------------------------------------
-$_o['cms_simple'] = $_cms_simple = (int)true;
+$_o['cms_simple'] = $_cms_simple = (int)false;
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/_config_db.php";
 

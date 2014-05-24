@@ -1,82 +1,87 @@
 <?php
-require_once 'typed_objects_widget_proc.php';
+	require_once 'typed_objects_widget_proc.php';
 
 class TTyped_objects extends TWidget
 {
-	public $version = array(1, 0, 6);
-	protected $menu_section = '???????';
+	public $version=array(1, 0, 6);
+	protected $menu_section='???????';
 
 // -----------------------------------------------------------------------------
-	function __construct()
-	{
-		global $_cms_objects_types;
+function __construct()
+{
+	global $_cms_objects_types;
 
-		$this->widget_title = array();
-		$this->menu_name = array();
-		$this->url = array();
-		foreach ($_cms_objects_types as $obj)
+    $this->widget_title=array();
+    $this->menu_name=array();
+    $this->url=array();
+	foreach($_cms_objects_types as $obj)
+	{
+		if(isset($obj['menu_item_id']) && $obj['menu_item_id']!='')
 		{
-			if (isset($obj['menu_item_id']) && $obj['menu_item_id'] != '')
-			{
-				$this->widget_title[$obj['id']] = $obj['name'];
-				$this->menu_name[$obj['id']] = $obj['name'];
-				$this->url[$obj['id']] = "typed_objects.php?objtype={$obj['id']}";
-			}
+        	$this->widget_title[$obj['id']]=$obj['name'];
+        	$this->menu_name[$obj['id']]=$obj['name'];
+        	$this->url[$obj['id']]="typed_objects.php?objtype={$obj['id']}";
 		}
 	}
-
+}
 // -----------------------------------------------------------------------------
-	public function init($parent)
-	{
-		global $_cms_objects_table, $_cms_objects_details, $_cms_text_parts, $_base_site_objects_images_path, $_base_site_structured_text_images_path;
-		$this->widget_tables = array($_cms_objects_table, $_cms_objects_details, $_cms_text_parts);
-		$this->widget_folders = array($_base_site_objects_images_path, $_base_site_structured_text_images_path);
-		return parent::init($parent);
-	}
-
+public function init($parent)
+{
+    global $_cms_objects_table, $_cms_objects_details, $_cms_text_parts, $_base_site_objects_images_path, $_base_site_structured_text_images_path;
+	$this->widget_tables=array($_cms_objects_table, $_cms_objects_details, $_cms_text_parts);
+	$this->widget_folders=array($_base_site_objects_images_path, $_base_site_structured_text_images_path);
+	return parent::init($parent);
+}
 // -----------------------------------------------------------------------------
-	public function get_addon_js()
-	{
-		global $_admin_root_url, $_scripts_libs_url;
+public function get_addon_js()
+{
+	global $_admin_root_url, $_scripts_libs_url;
 
-		return array(
-			"$_admin_root_url/uploader/swfupload.js",
-			"$_scripts_libs_url/rangy/1.3/rangy-core.js",
-			"$_scripts_libs_url/rangy/1.3/rangy-textrange.js",
-			"$_scripts_libs_url/ckeditor/3.6.2/ckeditor.js",
-		);
-	}
+	return array(
+		"$_admin_root_url/uploader/swfupload.js",
+		"$_scripts_libs_url/rangy/1.3/rangy-core.js",
+		"$_scripts_libs_url/rangy/1.3/rangy-textrange.js",
+		"$_scripts_libs_url/ckeditor/3.6.2/ckeditor.js",
 
+		'*directories',
+	);
+}
 // -----------------------------------------------------------------------------
-	public function get_title()
-	{
-		global $objtype;
-
-		queryImportVars('objtype', false);
-		$obj = typed_objects_get_object_description($objtype);
-		if ($obj !== false) return $obj['name'];
-		return '';
-	}
-
+public function get_addon_css()
+{
+	return array(
+		'*directories',
+	);
+}
 // -----------------------------------------------------------------------------
-	public function show_start_screen()
-	{
-		global $menu_id, $objtype, $_cms_simple;
+public function get_title()
+{
+    global $objtype;
 
-		queryImportVars('menu_id|objtype', true);
-		if (!isset($menu_id) || $menu_id == '') $menu_id = -1;
+	queryImportVars('objtype', false);
+	$obj=typed_objects_get_object_description($objtype);
+	if ($obj!==false) return $obj['name'];
+	return '';
+}
+// -----------------------------------------------------------------------------
+public function show_start_screen()
+{
+	global $menu_id, $objtype, $_cms_simple;
+
+	queryImportVars('menu_id|objtype', true);
+	if (!isset($menu_id) || $menu_id=='') $menu_id=-1;
 //	if (strpos($menu_id, ',')!==false) $menu_id_init=-1;
-		if (isset($objtype) && $objtype != '')
-		{
-			$obj = typed_objects_get_object_description($objtype);
-			if (isset($obj['menu_item_id']) && $obj['menu_item_id'] != '') $menu_id = $obj['menu_item_id'];
-		}
-		$menu_id_init = $menu_id;
-		$selector = common_get_menu_item_selector($menu_id, '???????? ??????', 'typed_objects_menu_item_select_change');
+	if (isset($objtype) && $objtype!='')
+    {
+		$obj=typed_objects_get_object_description($objtype);
+		if (isset($obj['menu_item_id']) && $obj['menu_item_id']!='') $menu_id=$obj['menu_item_id'];
+	}
+	$menu_id_init=$menu_id;
+	$selector=common_get_menu_item_selector($menu_id, '???????? ??????', 'typed_objects_menu_item_select_change');
 
-		$styleUrl = pmTemplateURL().'/css/texts.css';
+	$styleUrl=pmTemplateURL().'/css/texts.css';
 //    <input type="hidden" value="$menu_item_fixed" id="typed_objects_menu_item_fixed">
-		echo <<<stop
+	echo <<<stop
 <script type="text/javascript">
 $(document).ready(function() {
     CKEDITOR.config.toolbar = [
@@ -114,11 +119,10 @@ $selector
 <div id="typed_objects_objects_list"></div>
 </div>
 stop;
-		if ($menu_id) echo <<<stop
+	if ($menu_id) echo <<<stop
 <script type="text/javascript">typed_objects_show_objects_list_page(0);</script>
 stop;
-	}
+}
 // -----------------------------------------------------------------------------
 }
-
 ?>
