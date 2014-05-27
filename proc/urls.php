@@ -51,6 +51,7 @@ function get_menu_url($id)
 }
 
 /**
+ * @todo перейти на $_o
  * Возвращает путь в меню от корня подраздела до заданного подраздела меню.
  * Если не указан требуемый  (реально) параметр $parent, будет выполнен дополнительный запрос к БД.
  *
@@ -61,7 +62,7 @@ function get_menu_url($id)
  */
 function get_menu_item_path($id, $parent = null)
 {
-	global $_cms_menus_items_table, $_cms_simple, $_main_menu_id;
+	global $_cms_menus_items_table;
 
 	// кэшируем активный путь, т.к. он не изменяется
 	static $path;
@@ -100,6 +101,22 @@ function get_content()
 	global $_o;
 	$text_id = get_menu_item_id();
 	return get_data_array('*', $_o['cms_texts_table'], "menu_item=$text_id");
+}
+
+
+/**
+ *  Возвращает ид текущего меню (т.е. дерева). Предназначена для использования при работе сайта в режиме мультименю.
+ *
+ * @return int ид меню (>0), если найдено, иначе 0 (ошибочная ситуация)
+ */
+function get_menu_id()
+{
+	global $_o;
+	$itemId = get_menu_item_id();
+	$menuId = get_data('menu', $_o['cms_menus_items_table'], "id = $itemId");
+	if ($menuId === false)
+		return 0;
+	return $menuId;
 }
 
 /**

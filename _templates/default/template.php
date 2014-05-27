@@ -9,7 +9,9 @@ echo <<<stop
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta http-equiv="Content-Type" content="text/html; charset={$html_charset}">
+		<script type="text/javascript" src="{$_o['base_site_js_url']}/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="{$_o['base_site_js_url']}/main.js"></script>
 	</head>
 	<body>
@@ -17,12 +19,11 @@ stop;
 
 switch ($pagePath[0])
 {
-	// текстовый раздел
 	case '':
 		echo '<@gadget_index>';
 		break;
 	default:
-		echo '<@gadget_content>';
+		echo '<@gadget_top_menu><@content_stub>';
 		break;
 }
 

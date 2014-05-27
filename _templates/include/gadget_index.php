@@ -28,7 +28,7 @@ echo <<<INDEX
 					<a href="#">Мне нужен <span>Бухгалтер</span></a>
 				</div>
 			</div>
-			<div class="index_haeder_container_triangle"></div>
+			<div class="index_header_container_triangle"></div>
 		</div>
 		<div class="index_slider_container">
 			<div class="index_slider_container_inner">

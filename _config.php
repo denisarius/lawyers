@@ -57,8 +57,8 @@ $_o['cms_directories_data'] = $_cms_directories_data = 'directories_data';
 $_o['cms_texts_url_prefix'] = $_cms_texts_url_prefix = 'content';
 
 // ID для различных меню
-$_main_menu_id = 1; // Необходимо для simple_mode
-$_o['main_menu_id'] = $_main_menu_id = 1;
+// Необходимо для simple_mode == false
+// $_o['main_menu_id'] = $_main_menu_id = 1;
 
 // Описание языков сайта
 $_languages = array(
@@ -66,7 +66,16 @@ $_languages = array(
 		'id' => 'ru',
 		'title' => 'Рус',
 		'admin_title' => 'Русский',
-
+		'lawyer_menu' => array(
+			'id' => 1,
+			'about_id' => 31,
+			'contacts_id' => 32
+		),
+		'accountant_menu' => array(
+			'id' => 2,
+			'about_id' => 30,
+			'contacts_id' => 33
+		)
 	),
 );
 

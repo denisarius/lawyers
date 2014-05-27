@@ -64,7 +64,7 @@ ul {
     position: relative;
 }
 
-.index_haeder_container_triangle {
+.index_header_container_triangle {
     width: 100%;
     height: 12px;
     background: url("@!template@/images/header_triangle_bottom.png") repeat-x;
