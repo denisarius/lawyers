@@ -26,6 +26,17 @@ switch ($pagePath[0])
 				<br>
 			</div>';
 		break;
+	// текстовые разделы
+	case 'about':
+	case 'contacts':
+		echo '<@gadget_top_menu>
+		<div class="content_container">
+			<div class="left_column"><!-- тут пока пусто --></div>
+			<div class="right_column"><@gadget_appointment_form><@gadget_content></div>
+			<br>
+		</div>';
+		break;
+	// индексная страница
 	case '':
 		echo '<@gadget_index>';
 		break;

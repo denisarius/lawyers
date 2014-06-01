@@ -1,9 +1,22 @@
 <?php
+
+// Тут выводится "шапка" вместе с верхним меню
+
+global $_o;
 $langSettings = pmGetCurrentLanguage();
 $isLawyerActive = get_menu_id() == $langSettings['lawyer_menu']['id'];
 $lawyerMenuClass = $isLawyerActive ? 'class="current"' : '';
 // пока третьего не дано, работаем от противного
 $accountantMenuClass = !$isLawyerActive ? 'class="current"' : '';
+
+$linkAbout = get_menu_url(
+	get_data('id', $_o['cms_menus_items_table'], 'menu = '.get_menu_id().' and url=\'about\'')
+);
+
+$linkContacts = get_menu_url(
+	get_data('id', $_o['cms_menus_items_table'], 'menu = '.get_menu_id().' and url=\'contacts\'')
+);
+
 echo <<<MENU
 <div class="header_container">
 	<div class="header_container_inner">
@@ -29,8 +42,8 @@ echo <<<MENU
 		<ul class="header_container_menu">
 			<li><a href="/service/1/0.html" $lawyerMenuClass>Юридические услуги</a></li>
 			<li><a href="/service/18/0.html" $accountantMenuClass>Бухгалтерские услуги</a></li>
-			<li><a href="#">О нас</a></li>
-			<li><a href="#">Контакты</a></li>
+			<li><a href="$linkAbout">О нас</a></li>
+			<li><a href="$linkContacts">Контакты</a></li>
 		</ul>
 	</div>
 	<div class="index_header_container_triangle"></div>
