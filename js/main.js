@@ -1,19 +1,19 @@
 $(document).ready(function () {
     $(".wrap_index_header_link").hover(function () {
-        $(".index_header_inner").andSelf().css("background", "url(img/header_img_back.jpg)");
+        $(".index_header_inner").andSelf().css("background", "url(@!template@/images/header_img_back.jpg)");
     });
     $(".wrap_index_header_link.right").hover(function () {
-        $(".index_header_inner").andSelf().css("background", "url(img/header_img_back_right.jpg)");
+        $(".index_header_inner").andSelf().css("background", "url(@!template@/images/header_img_back_right.jpg)");
     });
 
 
     $(".wrap_index_header_link.right").hover(
         function (event) {
             event.stopPropagation();
-            $(".index_header_inner").css("background", "url(img/header_img_back_right.jpg)");
+            $(".index_header_inner").css("background", "url(@!template@/images/header_img_back_right.jpg)");
         }).mouseleave(function (event) {
             event.stopPropagation();
-            $(".index_header_inner").css("background", "url(img/header_img_back_right.jpg)");
+            $(".index_header_inner").css("background", "url(@!template@/images/header_img_back_right.jpg)");
         }
     )
 

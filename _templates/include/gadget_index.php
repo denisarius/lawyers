@@ -22,10 +22,10 @@ echo <<<INDEX
 					</div>
 				</div>
 				<div class="wrap_index_header_link">
-					<a href="#">Мне нужен <span>Юрист</span></a>
+					<a href="/service/1/0.html">Мне нужен <span>Юрист</span></a>
 				</div>
 				<div class="wrap_index_header_link right">
-					<a href="#">Мне нужен <span>Бухгалтер</span></a>
+					<a href="/service/18/0.html">Мне нужен <span>Бухгалтер</span></a>
 				</div>
 			</div>
 			<div class="index_header_container_triangle"></div>
