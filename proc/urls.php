@@ -112,11 +112,16 @@ function get_content()
 function get_menu_id()
 {
 	global $_o;
-	$itemId = get_menu_item_id();
-	$menuId = get_data('menu', $_o['cms_menus_items_table'], "id = $itemId");
-	if ($menuId === false)
-		return 0;
-	return $menuId;
+
+	static $menuId;
+
+	if (!isset($menuId))
+	{
+		$itemId = get_menu_item_id();
+		$menuId = get_data('menu', $_o['cms_menus_items_table'], "id = $itemId");
+	}
+
+	return $menuId === false ? 0 : $menuId;
 }
 
 /**

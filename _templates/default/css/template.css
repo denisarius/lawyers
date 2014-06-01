@@ -277,6 +277,10 @@ ul {
     display: none;
 }
 
+.submenu_accordion.init_opened {
+    display: block;
+}
+
 .submenu_accordion li {
     background: none;
     border: none;
@@ -296,7 +300,7 @@ ul {
     border-radius: 20px;
 }
 
-.left_menu_accordion li .submenu_accordion a:hover {
+.left_menu_accordion li .submenu_accordion a:hover, .left_menu_accordion li .submenu_accordion li.active a {
     background: #ececec;
 }
 

@@ -27,8 +27,8 @@ echo <<<MENU
 			</div>
 		</div>
 		<ul class="header_container_menu">
-			<li><a href="#" $lawyerMenuClass>Юридические услуги</a></li>
-			<li><a href="#" $accountantMenuClass>Бухгалтерские услуги</a></li>
+			<li><a href="/service/1/0.html" $lawyerMenuClass>Юридические услуги</a></li>
+			<li><a href="/service/18/0.html" $accountantMenuClass>Бухгалтерские услуги</a></li>
 			<li><a href="#">О нас</a></li>
 			<li><a href="#">Контакты</a></li>
 		</ul>

@@ -9,7 +9,6 @@ echo <<<stop
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta http-equiv="Content-Type" content="text/html; charset={$html_charset}">
 		<script type="text/javascript" src="{$_o['base_site_js_url']}/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="{$_o['base_site_js_url']}/main.js"></script>
@@ -19,6 +18,14 @@ stop;
 
 switch ($pagePath[0])
 {
+	case 'service':
+		echo '<@gadget_top_menu>
+			<div class="content_container">
+				<div class="left_column"><@gadget_left_menu><@gadget_feedback></div>
+				<div class="right_column"><@gadget_appointment_form><@gadget_text_object></div>
+				<br>
+			</div>';
+		break;
 	case '':
 		echo '<@gadget_index>';
 		break;
