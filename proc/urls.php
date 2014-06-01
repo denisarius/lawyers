@@ -190,20 +190,6 @@ function content_menu_exists()
 	return false !== get_data('id', $_cms_menus_items_table, 'parent = '.get_menu_item_id());
 }
 
-//------------------------------------------------------------------------------
-function get_sections_url($section, $page)
-{
-	global $pagePath;
-
-
-//	if ($section < 10000)
-//		return "/recieps/$section/$page.html";
-//	else
-//	{
-//		$type_id = (int)$pagePath[2];
-//		return "/recieps/10000/$type_id/$page.html";
-//	}
-}
 
 //------------------------------------------------------------------------------
 function get_contents_url($section, $page)
